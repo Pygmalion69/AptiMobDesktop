@@ -1,4 +1,4 @@
-# AptiMobDesktop
+# AptiMob Desktop
 JavaFX Desktop client for the AptiMob solution.
 
 ![AptiMob Desktop](http://aptimob.nitri.de/img/aptimobdesktop.png "AptiMob Desktop")
