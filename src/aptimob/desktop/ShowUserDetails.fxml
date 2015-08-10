@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.web.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="424.0" xmlns:fx="http://javafx.com/fxml" fx:controller="aptimob.desktop.ShowUserDetailsController">
+  <children>
+    <VBox prefHeight="400.0" prefWidth="600.0" spacing="20.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
+      <children>
+        <Label fx:id="fullNameText" text="" textOverrun="CLIP" />
+        <Label fx:id="skillsText" text="" />
+        <Button fx:id="emailButton" mnemonicParsing="false" onAction="#handleEmailButton" prefWidth="263.0" text="" />
+        <Label fx:id="addressText" text="" />
+        <Label fx:id="postalCodeAndCityText" text="" />
+        <Label fx:id="countryText" text="" />
+        <Label fx:id="cellPhoneText" text="" />
+        <Label fx:id="phoneText" text="" />
+        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="520.0" spacing="20.0">
+          <children>
+            <Button fx:id="messageButton" mnemonicParsing="false" onAction="#handleMessageButton" text="%Message" />
+            <Button fx:id="closeButton" mnemonicParsing="false" onAction="#handleCloseButton" text="%Close" />
+          </children>
+        </HBox>
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

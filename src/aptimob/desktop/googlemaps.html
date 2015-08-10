@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <!--        <script type="text/javascript" src="http://openlayers.org/api/2.11/OpenLayers.js"></script>-->
+        <script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
+        <script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+
+        <script type="text/javascript" >
+            
+            var map;
+            var markers;
+            var locationMarker;
+            var locMethod;
+            var locLonLat;
+            var mapLayer;
+            //            var locSize;
+            //            var locOffset;
+            //            var locIcon;
+            
+            var locMethod = function setLocation(evt) {
+                locLonLat = map.getLonLatFromPixel(evt.xy);
+                locLonLat.transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
+                locationSelected();
+                fxapp.locationSelected(locLonLat.lon.toFixed(3), locLonLat.lat.toFixed(3));
+                //setLocationMarker(locLonLat.lon, locLonLat.lat)
+                //                //locLonLat = position.transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+                //                if (locationMarker) {
+                //                    locationMarker.destroy();
+                //                }
+                //                var locSize = new OpenLayers.Size(16, 28);
+                //                var locOffset = new OpenLayers.Pixel(0, -locSize.h);
+                //                var locIcon = new OpenLayers.Icon('pin_red.png', locSize, locOffset); 
+                //                //var layer = map.getLayer('Markers');
+                //                locationMarker = new OpenLayers.Marker(locLonLat, locIcon);
+                //                markers.addMarker(locationMarker);
+                //locationSelected();
+                // markers.addMarker(new OpenLayers.Marker(position, locIcon));
+            }
+            
+            function loadOpenLayers(){ 
+                
+                map = new OpenLayers.Map("aptimobmap", {});
+                 
+                controls = map.getControlsByClass('OpenLayers.Control.Navigation');
+                for(var i = 0; i < controls.length; ++i) {
+                    controls[i].disableZoomWheel();
+                }
+                mapLayer = new OpenLayers.Layer.Google();   
+
+                markers = new OpenLayers.Layer.Markers( "Markers" );
+                markers.id = "Markers";
+                
+                map.addLayer(mapLayer);
+                map.addLayer(markers);
+                           
+                //selectLocation();
+                             
+            } 
+            
+            function selectLocation() {
+                if (locationMarker != null) {
+                    locationMarker.display(false);
+                }
+                map.events.register("click", map , locMethod);
+            }
+            
+            function locationSelected() {
+                map.events.unregister("click", map, locMethod);
+                // fxapp.locationSelected(locLonLat.transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326")).lon.toFixed(3), locLonLat.transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326")).lat.toFixed(3));
+            }
+            
+            function setCenter(lon, lat) {
+                var centerLonLat = new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+                var zoom = 11;
+                map.setCenter(centerLonLat, zoom);
+            } 
+            
+            function getCenterLon() {
+                return map.getCenter().transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326")).lon.toFixed(3);
+            }
+            
+            function getCenterLat() {
+                return map.getCenter().transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326")).lat.toFixed(3);
+            }
+            
+            function getLocationLon(){
+                return locLonLat.lon;
+            }
+            
+            function getLocationLat(){
+                return locLonLat.lat;
+            }
+  
+            function setMarker(lon, lat, id, name, highlight) {
+
+                var lonLatMarker = new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+                var size = new OpenLayers.Size(32, 37);
+                var offset = new OpenLayers.Pixel(-(size.w)/2, -size.h);
+                var icon;
+                if (highlight) {
+                    icon = new OpenLayers.Icon("male-2-glow.png", size, offset);
+                } else {
+                    icon = new OpenLayers.Icon("male-2.png", size, offset);
+                }
+                var marker = new OpenLayers.Marker(lonLatMarker, icon);
+
+                var markerClick = function(evt) {
+                    OpenLayers.Event.stop(evt);
+                    fxapp.showDetails(id.toString());
+                    
+                };
+                marker.events.register("mousedown", null, markerClick);
+
+                markers.addMarker(marker);
+            }
+            
+            function setLocationMarker(lon, lat) {
+
+                var lonLatMarker = new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+                var size = new OpenLayers.Size(16, 28);
+                var offset = new OpenLayers.Pixel(0, -size.h);
+                var icon = new OpenLayers.Icon("pin_red.png", size, offset);
+                locationMarker = new OpenLayers.Marker(lonLatMarker, icon);
+
+                markers.addMarker(locationMarker);
+            }
+            
+            function clearMarkers() {
+                markers.clearMarkers();
+            }
+   
+        </script>
+    </head>
+    <body onload="loadOpenLayers();">
+        <div id="aptimobmap" style="width: 800px; height: 480px; border: 1px solid;">
+        </div>
+
+    </body>
+</html>

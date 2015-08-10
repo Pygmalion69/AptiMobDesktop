@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="basePane" prefHeight="1080.0" prefWidth="1920.0" xmlns:fx="http://javafx.com/fxml" fx:controller="aptimob.desktop.MessageTableController">
+  <children>
+    <TableView fx:id="messageTable" layoutX="0.0" layoutY="0.0" prefHeight="1080.0" prefWidth="1920.0">
+      <columns>
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="180.0" text="%From" fx:id="fromCol" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="162.0" text="%To" fx:id="toCol" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="299.0" text="%Subject" fx:id="subjectCol" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="213.0" text="%Date" fx:id="dateCol" />
+      </columns>
+    </TableView>
+  </children>
+</AnchorPane>

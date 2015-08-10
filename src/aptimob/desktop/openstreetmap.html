@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+<!--        <script type="text/javascript" src="http://openlayers.org/api/2.11/OpenLayers.js"></script>-->
+<script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
+<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+
+        <script type="text/javascript" >
+            
+            var map;
+            var markers;
+                        
+            function loadOpenLayers(){ 
+                
+                map = new OpenLayers.Map("aptimobmap", {});
+                 
+                controls = map.getControlsByClass('OpenLayers.Control.Navigation');
+                for(var i = 0; i < controls.length; ++i) {
+                    controls[i].disableZoomWheel();
+                }
+                var mapLayer = new OpenLayers.Layer.OSM();   
+//                var mapLayer = new OpenLayers.Layer.WMS(
+//                "Global Imagery",
+//                "http://maps.opengeo.org/geowebcache/service/wms",
+//                {layers: "openstreetmap", format: "image/png"}
+//            );
+                markers = new OpenLayers.Layer.Markers( "Markers" );
+                map.addLayer(mapLayer);
+                map.addLayer(markers);
+   
+                // Set start centrepoint and zoom    
+//                                var lonLat = new OpenLayers.LonLat( 6.2317, 51.7034 )
+//                                .transform(
+//                                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+//                                map.getProjectionObject() // to Spherical Mercator Projection
+//                            );
+//                                var zoom=11;
+//                                map.setCenter (lonLat, zoom); 
+    
+               
+                //setMarker(7.0, 52.0, 1);
+               
+      
+                //setMarker(6.24, 51.71, 12345, "Piet Lozekoot");
+    
+            } 
+            
+            function setCenter(lon, lat) {
+                var centerLonLat = new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+                var zoom = 11;
+                map.setCenter(centerLonLat, zoom);
+            } 
+            
+            function getCenterLon() {
+                return map.getCenter().transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326")).lon.toFixed(3);
+            }
+            
+            function getCenterLat() {
+                return map.getCenter().transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326")).lat.toFixed(3);
+            }
+  
+            function setMarker(lon, lat, id, name) {
+
+                var lonLatMarker = new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+                var feature = new OpenLayers.Feature(markers, lonLatMarker);
+                feature.closeBox = true;
+                feature.popupClass = OpenLayers.Class(OpenLayers.Popup.AnchoredBubble, {minSize: new OpenLayers.Size(300, 180) } );
+                // feature.data.popupContentHTML = '<a href="#" onClick="fxapp.out(' + id.toString() + ')">' + name + '</a>';
+                feature.data.popupContentHTML = '<a href="#" onClick="fxapp.showDetails(' + id.toString() + ')">' + name + '</a>';
+                feature.data.overflow = "hidden";
+                
+                var size = new OpenLayers.Size(21,25);
+                var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+                var icon = new OpenLayers.Icon("male-2.png", size, offset);
+                var marker = new OpenLayers.Marker(lonLatMarker, icon);
+                marker.feature = feature;
+
+                var markerClick = function(evt) {
+                    fxapp.showDetails(id.toString());
+                    //                    if (this.popup == null) {
+                    //                        this.popup = this.createPopup(this.closeBox);
+                    //                        map.addPopup(this.popup);
+                    //                        this.popup.show();
+                    //                    } else {
+                    //                        this.popup.toggle();
+                    //                    }
+                    OpenLayers.Event.stop(evt);
+                };
+                marker.events.register("mousedown", feature, markerClick);
+
+                markers.addMarker(marker);
+            }
+   
+        </script>
+    </head>
+    <body onload="loadOpenLayers();">
+        <div id="aptimobmap" style="width: 800px; height: 480px; border: 1px solid;">
+        </div>
+
+    </body>
+</html>

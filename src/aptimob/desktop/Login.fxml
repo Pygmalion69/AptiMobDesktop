@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="aptimob.desktop.LoginController">
+  <children>
+    <GridPane hgap="10.0" layoutX="149.0" layoutY="125.0" prefWidth="303.0" vgap="10.0">
+      <children>
+        <Label text="%ApplicationName" GridPane.columnIndex="0" GridPane.rowIndex="0">
+          <font>
+            <Font size="16.0" />
+          </font>
+        </Label>
+        <Label text="%Username" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Label text="%Password" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="userField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <PasswordField fx:id="passwdField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+    <Button fx:id="loginButton" layoutX="386.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleLoginButton" text="%Login" />
+    <Label fx:id="messageField" layoutX="154.0" layoutY="79.0" prefWidth="285.0" text="" />
+  </children>
+</AnchorPane>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="281.0" prefWidth="753.0" xmlns:fx="http://javafx.com/fxml" fx:controller="aptimob.desktop.SkillDetailController">
+  <children>
+    <GridPane fx:id="skillGridPane" hgap="20.0" layoutX="0.0" layoutY="33.0" prefHeight="248.0" prefWidth="753.0" vgap="20.0">
+      <children>
+        <ComboBox fx:id="categoryComboBox" disable="false" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Item 1" />
+              <String fx:value="Item 2" />
+              <String fx:value="Item 3" />
+            </FXCollections>
+          </items>
+        </ComboBox>
+        <Label alignment="CENTER_RIGHT" text="%Category" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
+        <Label graphicTextGap="0.0" text="%Code" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+        <Label text="%Description" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+        <TextField fx:id="codeTextField" disable="false" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField fx:id="descriptionTextField" disable="false" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+        <ComboBox id="domainComboBox" prefWidth="142.0" promptText="%Domain" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="0">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Item 1" />
+              <String fx:value="Item 2" />
+              <String fx:value="Item 3" />
+            </FXCollections>
+          </items>
+        </ComboBox>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="160.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="160.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="104.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="274.0" minWidth="10.0" prefWidth="269.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="109.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="109.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="109.0" minHeight="10.0" prefHeight="109.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+    <ToolBar fx:id="detailToolBar" layoutX="0.0" layoutY="2.0" prefWidth="360.0">
+      <items>
+        <Button id="editUserButton" fx:id="editButton" disable="true" mnemonicParsing="false" onAction="#handleEditSkillButton" text="%Edit" />
+        <Button id="saveUserButton" fx:id="saveButton" disable="true" mnemonicParsing="false" onAction="#handleSaveSkillButton" text="%Save" />
+        <Button id="deleteUserButton" fx:id="deleteButton" disable="true" mnemonicParsing="false" onAction="#handleDeleteSkillButton" text="%Delete" />
+        <Button id="newUserButton" fx:id="newButton" disable="true" mnemonicParsing="false" onAction="#handleNewSkillButton" text="%New" />
+      </items>
+    </ToolBar>
+  </children>
+</AnchorPane>

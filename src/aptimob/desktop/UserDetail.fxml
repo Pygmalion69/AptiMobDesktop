@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?scenebuilder-preview-i18n-resource ../../bundles/strings_nl.properties?>
+
+<AnchorPane id="AnchorPane" fx:id="userDetailBasePane" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="625.0" prefWidth="-1.0" xmlns:fx="http://javafx.com/fxml" fx:controller="aptimob.desktop.UserDetailController">
+  <children>
+    <ToolBar fx:id="detailToolBar" layoutX="-1.0" layoutY="0.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="637.0">
+      <items>
+        <Button fx:id="editUserButton" disable="true" mnemonicParsing="false" onAction="#handleEditUserButton" text="%Edit" />
+        <Button fx:id="saveUserButton" disable="true" mnemonicParsing="false" onAction="#handleSaveUserButton" text="%Save" />
+        <Button fx:id="deleteUserButton" disable="true" mnemonicParsing="false" onAction="#handleDeleteUserButton" text="%Delete" />
+        <Button fx:id="newUserButton" disable="true" mnemonicParsing="false" onAction="#handleNewUserButton" text="%New" />
+        <Separator orientation="VERTICAL" prefHeight="20.0" prefWidth="87.0" />
+        <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleRefreshButton" prefWidth="95.0" text="%Refresh" />
+      </items>
+    </ToolBar>
+    <ScrollPane fx:id="userDetailScrollPane" layoutX="1.0" layoutY="29.0" pannable="false" prefHeight="59.0" prefWidth="637.0" vbarPolicy="AS_NEEDED">
+      <content>
+        <GridPane fx:id="userGridPane" alignment="TOP_CENTER" depthTest="INHERIT" hgap="20.0" minHeight="-1.0" mouseTransparent="false" prefHeight="462.0" prefWidth="636.0" vgap="20.0">
+          <children>
+            <Label alignment="CENTER_RIGHT" text="%TaxCode" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+            <TextField id="taxNumberField" fx:id="taxCodeField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label alignment="CENTER_RIGHT" text="%Phone" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+            <Label alignment="CENTER_RIGHT" text="%CellPhone" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+            <Label alignment="CENTER_RIGHT" text="%Country" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+            <Label alignment="CENTER_RIGHT" text="%City" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <Label alignment="CENTER_RIGHT" text="%PostalCode" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <Label alignment="CENTER_RIGHT" text="%Address" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <Label alignment="CENTER_RIGHT" text="%LastName" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Label contentDisplay="RIGHT" text="%FirstName" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="%User" textAlignment="RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="userField" prefWidth="200.0" promptText="%UseEmailAddress" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextField fx:id="firstNameField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="lastNameField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="addressField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="postalCodeField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="cityField" prefHeight="22.0" prefWidth="144.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox fx:id="countryComboBox" GridPane.columnIndex="1" GridPane.rowIndex="6">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Item 1" />
+                  <String fx:value="Item 2" />
+                  <String fx:value="Item 3" />
+                </FXCollections>
+              </items>
+            </ComboBox>
+            <TextField fx:id="cellPhoneField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="phoneField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <CheckBox fx:id="availCheckBox" alignment="CENTER" contentDisplay="LEFT" mnemonicParsing="false" text="%Available" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+            <Label text="%Skills" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label text="%Groups" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+            <ListView fx:id="skillListView" prefHeight="110.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="3" />
+            <ListView fx:id="groupListView" prefHeight="95.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="6" GridPane.rowSpan="3" />
+            <ComboBox fx:id="skillCategoryComboBox" disable="false" prefWidth="128.0" promptText="%Category" GridPane.columnIndex="3" GridPane.rowIndex="1">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Item 1" />
+                  <String fx:value="Item 2" />
+                  <String fx:value="Item 3" />
+                </FXCollections>
+              </items>
+            </ComboBox>
+            <ComboBox fx:id="skillComboBox" disable="true" prefWidth="128.0" promptText="%Skill" GridPane.columnIndex="3" GridPane.rowIndex="2">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Item 1" />
+                  <String fx:value="Item 2" />
+                  <String fx:value="Item 3" />
+                </FXCollections>
+              </items>
+            </ComboBox>
+            <Button fx:id="addSkillButton" disable="true" mnemonicParsing="false" onAction="#handleAddSkillButton" text="%Add" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button fx:id="removeSkillButton" disable="true" mnemonicParsing="false" onAction="#handleRemoveSkillButton" text="%Remove" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <ComboBox fx:id="groupComboBox" disable="true" prefWidth="128.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Item 1" />
+                  <String fx:value="Item 2" />
+                  <String fx:value="Item 3" />
+                </FXCollections>
+              </items>
+            </ComboBox>
+            <Button fx:id="addGroupButton" disable="true" mnemonicParsing="false" onAction="#handleAddGroupButton" text="%Add" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Button fx:id="removeGroupButton" disable="true" mnemonicParsing="false" onAction="#handleRemoveGroupButton" text="%Remove" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <PasswordField fx:id="passwordField" prefWidth="142.00009999999747" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+            <Label fx:id="labelPassword" alignment="CENTER_RIGHT" text="%Password" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
+            <ComboBox fx:id="domainComboBox" prefWidth="142.0" promptText="%Domain" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="0">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Item 1" />
+                  <String fx:value="Item 2" />
+                  <String fx:value="Item 3" />
+                </FXCollections>
+              </items>
+            </ComboBox>
+          </children>
+          <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          </columnConstraints>
+          <padding>
+            <Insets bottom="20.0" top="20.0" />
+          </padding>
+          <rowConstraints>
+            <RowConstraints maxHeight="27.0" prefHeight="22.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="28.0" prefHeight="22.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="48.0" prefHeight="26.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="61.0" prefHeight="27.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="97.0" prefHeight="26.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="97.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="204.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="170.0" prefHeight="23.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="104.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="105.0" prefHeight="24.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+      </content>
+    </ScrollPane>
+  </children>
+</AnchorPane>

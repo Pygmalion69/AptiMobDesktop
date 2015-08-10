@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import layouttest.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1080.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="aptimob.desktop.AptiMobMainController">
+  <children>
+    <MenuBar id="" fx:id="menuBar" maxWidth="-Infinity" prefHeight="26.0" prefWidth="600.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="%Application">
+          <items>
+            <MenuItem mnemonicParsing="false" text="%About" />
+            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="%Exit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" style="" text="%UsersGroups" fx:id="menuUsersGroups">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#handleMaintainUsers" text="%MaintainUsers" fx:id="menuItemMaintainUsers" />
+            <MenuItem mnemonicParsing="false" onAction="#handleAddUser" style="" text="%AddUser" fx:id="menuItemAddUser" />
+          </items>
+        </Menu>
+        <Menu disable="true" mnemonicParsing="false" text="%Domains" visible="false" fx:id="menuDomains">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#handleMaintainDomains" text="%MaintainDomains" fx:id="menuItemMaintainDomains" />
+          </items>
+        </Menu>
+        <Menu disable="true" mnemonicParsing="false" text="%Skills" fx:id="menuSkills">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#handleMaintainCategories" text="%MaintainCategories" />
+          </items>
+        </Menu>
+        <Menu disable="true" mnemonicParsing="false" text="%Map" visible="false" fx:id="menuMap">
+          <items>
+            <CheckMenuItem mnemonicParsing="false" text="%osm" fx:id="osmCheck" />
+            <CheckMenuItem mnemonicParsing="false" text="%wmsOsm" fx:id="wmsOsmCheck" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <BorderPane fx:id="basePane" prefHeight="374.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
+      <center>
+        <SplitPane id="hrozontal" fx:id="horizontalSplit" dividerPositions="0.17717996289424862" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="374.0" prefWidth="600.0">
+          <items>
+            <AnchorPane fx:id="leftPane" maxHeight="-Infinity" maxWidth="200.0" minHeight="0.0" minWidth="186.0" prefHeight="-1.0" prefWidth="-1.0">
+              <children>
+                <Accordion id="leftAccorion" fx:id="leftAccordion" layoutX="-2.0" layoutY="0.0" minWidth="186.0" prefHeight="-1.0" prefWidth="186.0">
+                  <expandedPane>
+                    <TitledPane fx:id="availTitledPane" animated="false" collapsible="true" expanded="true" maxHeight="-1.0" onMouseClicked="#resetTreeSelection" text="%Availability">
+                      <content>
+                        <AnchorPane id="Content" fx:id="availTreeAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="-1.0" prefWidth="-1.0">
+                          <children>
+                            <TreeView fx:id="availTreeView" layoutX="0.0" layoutY="0.0" prefHeight="-1.0" prefWidth="-1.0" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </TitledPane>
+                  </expandedPane>
+                  <panes>
+                    <TitledPane fx:id="userTiteledPane" animated="false" expanded="false" minWidth="186.0" onMouseClicked="#resetTreeSelection" prefHeight="221.0" prefWidth="186.0" text="%Users">
+                      <content>
+                        <AnchorPane id="Content" fx:id="userTreeAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="-1.0" prefWidth="-1.0">
+                          <children>
+                            <TreeView fx:id="userTreeView" layoutX="0.0" layoutY="0.0" prefHeight="-1.0" prefWidth="-1.0" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </TitledPane>
+                    <fx:reference source="availTitledPane" />
+                    <TitledPane fx:id="x1" animated="false" onMouseClicked="#resetTreeSelection" text="%Skills">
+                      <content>
+                        <AnchorPane id="Content" fx:id="skillNavigationTreeAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="213.0" prefWidth="182.0">
+                          <children>
+                            <TreeView fx:id="skillNavigationTreeView" layoutX="0.0" layoutY="0.0" prefHeight="200.0" prefWidth="200.0" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </TitledPane>
+                    <TitledPane id="x1" fx:id="x2" animated="false" minWidth="186.0" onMouseClicked="#resetTreeSelection" prefWidth="186.0" text="%Resources">
+                      <content>
+                        <AnchorPane id="Content" fx:id="resourceNavigationTreeAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="213.0" prefWidth="182.0">
+                          <children>
+                            <TreeView id="skillNavigationTreeView" fx:id="resourceNavigationTreeView" layoutX="0.0" layoutY="0.0" prefHeight="200.0" prefWidth="200.0" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </TitledPane>
+                    <TitledPane fx:id="messagesTiteledPane" animated="false" expanded="false" minWidth="186.00009999999747" onMouseClicked="#resetTreeSelection" prefWidth="186.00009999999747" text="%Messages">
+                      <content>
+                        <AnchorPane id="Content" fx:id="messageTreeAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="239.0" prefWidth="182.0">
+                          <children>
+                            <TreeView fx:id="messageTreeView" layoutX="0.0" layoutY="0.0" prefHeight="242.0" prefWidth="186.0" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </TitledPane>
+                  </panes>
+                </Accordion>
+              </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+              <children>
+                <BorderPane prefHeight="372.0" prefWidth="439.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <center>
+                    <SplitPane dividerPositions="0.5015384615384615" focusTraversable="true" orientation="VERTICAL" prefHeight="-1.0" prefWidth="-1.0">
+                      <items>
+                        <ScrollPane fx:id="overview" content="$null" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" vbarPolicy="AS_NEEDED" />
+                        <Pane fx:id="detail" prefHeight="-1.0" prefWidth="-1.0" />
+                      </items>
+                    </SplitPane>
+                  </center>
+                </BorderPane>
+              </children>
+            </AnchorPane>
+          </items>
+        </SplitPane>
+      </center>
+    </BorderPane>
+  </children>
+</AnchorPane>

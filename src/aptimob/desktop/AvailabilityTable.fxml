@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?scenebuilder-preview-i18n-resource ../../bundles/strings_en.properties?>
+
+<AnchorPane id="AnchorPane" fx:id="basePane" maxHeight="-1.0" maxWidth="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="-1.0" prefWidth="1084.0" xmlns:fx="http://javafx.com/fxml" fx:controller="aptimob.desktop.AvailabilityTableController">
+  <children>
+    <ToolBar fx:id="availToolBar" layoutX="0.0" layoutY="0.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="1084.0">
+      <items>
+        <ComboBox fx:id="skillCategoryComboBox" prefWidth="147.0" promptText="%Category">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Item 1" />
+              <String fx:value="Item 2" />
+              <String fx:value="Item 3" />
+            </FXCollections>
+          </items>
+        </ComboBox>
+        <ComboBox fx:id="skillComboBox" disable="true" prefWidth="147.0" promptText="%Skill">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Item 1" />
+              <String fx:value="Item 2" />
+              <String fx:value="Item 3" />
+            </FXCollections>
+          </items>
+        </ComboBox>
+        <Button fx:id="setLocationButton" disable="true" mnemonicParsing="false" onAction="#handleSetLocationButton" text="%SetLocation" />
+        <ComboBox id="locationComboBox" fx:id="distanceComboBox" disable="true" prefWidth="88.0" promptText="%Distance">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Item 1" />
+              <String fx:value="Item 2" />
+              <String fx:value="Item 3" />
+            </FXCollections>
+          </items>
+        </ComboBox>
+        <ChoiceBox id="allUsersCombo" fx:id="allUsersChoice">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Item 1" />
+              <String fx:value="Item 2" />
+              <String fx:value="Item 3" />
+            </FXCollections>
+          </items>
+        </ChoiceBox>
+        <Separator orientation="VERTICAL" prefHeight="20.0" prefWidth="46.0" />
+        <Button fx:id="openButton" disable="true" mnemonicParsing="false" onAction="#handleOpenButton" prefWidth="88.0" text="%Open" />
+        <Button fx:id="messageButton" disable="true" mnemonicParsing="false" onAction="#handleMessageButton" prefWidth="88.0" text="%Message" />
+        <Separator orientation="VERTICAL" prefHeight="20.0" prefWidth="46.0" />
+        <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleRefreshButton" prefWidth="96.0" text="%Refresh" />
+      </items>
+    </ToolBar>
+    <ScrollPane id="ScrollPane" fx:id="availabilityScrollPane" layoutX="0.0" layoutY="30.0" prefViewportHeight="400.0" prefViewportWidth="822.0" prefWidth="1084.0">
+      <content>
+        <TableView fx:id="userTableView" maxHeight="-1.0" maxWidth="-1.0" prefHeight="1080.0" prefWidth="1920.0">
+          <columns>
+            <TableColumn prefWidth="200.0" text="%User" fx:id="userCol" />
+            <TableColumn prefWidth="100.0" text="%FirstName" fx:id="firstNameCol" />
+            <TableColumn prefWidth="100.0" text="%LastName" fx:id="lastNameCol" />
+            <TableColumn editable="false" maxWidth="5000.0" minWidth="10.0" prefWidth="104.0" text="%Available" visible="false" fx:id="availableCol" />
+            <TableColumn prefWidth="100.0" text="%City" fx:id="cityCol" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="160.0" text="%CellPhone" fx:id="cellPhoneCol" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="160.0" text="%Phone" fx:id="phoneCol" />
+          </columns>
+        </TableView>
+      </content>
+    </ScrollPane>
+  </children>
+</AnchorPane>

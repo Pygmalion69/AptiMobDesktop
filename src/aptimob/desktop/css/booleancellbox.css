@@ -1,0 +1,59 @@
+#boolean-cell-box {
+    -fx-skin: "com.sun.javafx.scene.control.skin.CheckBoxSkin";
+    -fx-label-padding: 0.0em 0.0em 0.0em 0.416667em; /* 0 0 0 5 */
+    -fx-text-fill: -fx-text-background-color;
+}
+check-box:focused {
+    -fx-color: -fx-focused-base;
+}
+
+#boolean-cell-box .box {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 2, 2, 1, 1;
+    -fx-padding: 0.25em; /* 3 -- padding from the outside edge to the mark */
+}
+
+#boolean-cell-box:focused .box {
+    -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: -1.4, 0, 1, 2;
+    -fx-background-radius: 3.4, 2, 1, 1;
+}
+
+#boolean-cell-box:hover .box {
+    -fx-color: -fx-hover-base;
+}
+
+#boolean-cell-box:armed .box {
+    -fx-color: -fx-pressed-base;
+}
+
+#boolean-cell-box .mark {
+    -fx-background-color: transparent;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.333333em; /* 4 -- this is half the size of the mark */
+    -fx-shape: "M0,4H2L3,6L6,0H8L4,8H2Z";
+}
+
+/* TODO: scale the shape - the problem is that it is not within a square
+ * boundary.
+*/
+#boolean-cell-box:indeterminate .mark {
+    -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
+    -fx-shape: "M0,0H8V2H0Z";
+    -fx-scale-shape: false;
+}
+
+#boolean-cell-box:selected .mark {
+    -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
+}
+
+#boolean-cell-box:disabled {
+    -fx-opacity: 1.0;
+}
+
+#boolean-cell-box:show-mnemonics .mnemonic-underline {
+    -fx-stroke: -fx-text-fill;
+} 
+
+

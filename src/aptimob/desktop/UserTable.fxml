@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootWindow" maxHeight="-1.0" maxWidth="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="-1.0" prefWidth="-1.0" xmlns:fx="http://javafx.com/fxml" fx:controller="aptimob.desktop.UserTableController">
+    <children>
+        <TableView fx:id="userTableView" maxHeight="-1.0" maxWidth="-1.0" prefHeight="1080.0" prefWidth="1920.0">
+            <columns>
+                <TableColumn prefWidth="200.0" text="%User" fx:id="userCol" />
+                <TableColumn prefWidth="100.0" text="%FirstName" fx:id="firstNameCol" />
+                <TableColumn prefWidth="100.0" text="%LastName" fx:id="lastNameCol" />
+                <TableColumn prefWidth="110.0" text="%Available" fx:id="availableCol" />
+                <TableColumn prefWidth="100.0" text="%City" fx:id="cityCol" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
