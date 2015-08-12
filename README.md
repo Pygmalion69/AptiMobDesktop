@@ -16,5 +16,4 @@ jfxmessagebox-1.1.0.jar
 Contained by JavaFX SDK:
 
 jfxrt.jar  
-deploy.jar
-
+commons-lang3-3.4
