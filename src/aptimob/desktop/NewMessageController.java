@@ -8,7 +8,6 @@ import aptimob.desktop.entities.Message;
 import aptimob.desktop.entities.User;
 import aptimob.desktop.models.MessageModel;
 import aptimob.desktop.models.UserModel;
-import com.sun.deploy.util.StringUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * FXML Controller class

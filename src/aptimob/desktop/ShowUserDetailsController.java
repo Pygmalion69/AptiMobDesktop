@@ -7,7 +7,6 @@ package aptimob.desktop;
 import aptimob.desktop.entities.Skill;
 import aptimob.desktop.entities.SkillCategory;
 import aptimob.desktop.entities.User;
-import com.sun.deploy.util.StringUtils;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -32,6 +31,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
