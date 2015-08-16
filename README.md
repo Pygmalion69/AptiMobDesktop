@@ -11,7 +11,7 @@ jasypt-1.9.0.jar
 gson-2.2.2.jar  
 commons-codec-1.7.jar  
 FXMessageBox.jar  
-jfxmessagebox-1.1.0.jar
+jfxmessagebox-1.1.0.jar  
 commons-lang3-3.4
 
 Contained by JavaFX SDK:
